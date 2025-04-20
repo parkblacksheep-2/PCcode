@@ -11,14 +11,12 @@ const EmployeeList = () => {
     const fetchEmployees = async () => {
       try {
         setLoading(true);
-        console.log('API 호출 시작...');
         const data = await employeeService.getAllEmployees();
-        console.log('받은 데이터:', data);
         setEmployees(data);
         setError(null);
       } catch (err) {
-        console.error('API 호출 에러:', err);
         setError('사원 데이터를 불러오는 중 오류가 발생했습니다.');
+        console.error('Error fetching employees:', err);
       } finally {
         setLoading(false);
       }
